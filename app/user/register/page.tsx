@@ -4,10 +4,10 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { UserAuthForm } from "@/components/user-auth-form";
+import { UserAuthForm } from "@/components/user-register-form";
 
 export const metadata: Metadata = {
-  title: "Register",
+  title: "Register - Imaiger",
   description: "Create a new Imaiger account.",
 };
 
@@ -41,21 +41,11 @@ export default function SignUp() {
           Login
         </Link>
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className="absolute inset-0 bg-zinc-900" />
-          <div className="relative z-20 flex items-center text-lg font-medium">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="mr-2 h-6 w-6"
-            >
-              <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
-            </svg>
-            Imaiger
+          <div className="absolute inset-0 bg-black" />
+          <div className="relative z-20 flex items-center">
+            <p className="font-Poppins text-sm font-bold bg-gradient-to-r from-amber-600 to-orange-600 text-transparent bg-clip-text sm:text-2xl xl:text-2xl">
+              imaiger
+            </p>
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">

@@ -6,7 +6,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { UserSignInForm } from "@/components/user-signin-form";
 
 export const metadata: Metadata = {
-  title: "Sign In",
+  title: "Sign In - Imaiger",
   description: "Sign in to your Imaiger dashboard.",
 };
 
