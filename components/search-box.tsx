@@ -3,29 +3,15 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function SearchBox() {
-  const [username, setUsername] = useState("");
+  const [keyword, setKeyword] = useState("");
   const [placeholder] = useState("Search...");
-  const [isLoading, setIsLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false); // Add loading state
   const router = useRouter();
 
   const handleChange = (e: {
     target: { value: React.SetStateAction<string> };
   }) => {
-    setUsername(e.target.value);
-  };
-
-  const handleSubmit = async () => {
-    setIsLoading(true); // Set loading state to true
-    router
-      .push({
-        pathname: `/tiktok-followers/${username}`
-          .replace(/@|\s+/g, "")
-          .toLowerCase(),
-      })
-      .then(() => {
-        window.scrollTo(0, 0);
-        setIsLoading(false); // Set loading state back to false when done
-      });
+    setKeyword(e.target.value);
   };
 
   const handleKeyUp = (e: { code: string }) => {
@@ -34,8 +20,14 @@ export default function SearchBox() {
     }
   };
 
+  const handleSubmit = async () => {
+    setLoading(true); // Set loading state to true
+    router.push(`/search/${keyword}`.replace(/\s+|,|--/g, "-").toLowerCase());
+    setLoading(false); // Set loading state back to false when done
+  };
+
   return (
-    <div className="relative">
+    <div className="sticky top-1 z-10">
       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
         <svg
           width="1em"
@@ -59,7 +51,7 @@ export default function SearchBox() {
         className="block w-full p-4 pl-10 text-lg font-Poppins text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
         type="search"
         id="username-search"
-        value={username}
+        value={keyword}
         onChange={handleChange}
         placeholder={placeholder}
         onKeyUp={handleKeyUp}
@@ -67,14 +59,14 @@ export default function SearchBox() {
       <button
         type="submit"
         className={`text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ${
-          isLoading ? "cursor-not-allowed opacity-50" : ""
+          loading ? "cursor-not-allowed opacity-50" : ""
         }`} // Add loading styles
         onClick={() => {
           handleSubmit();
         }}
-        disabled={isLoading} // Disable the button when loading
+        disabled={loading} // Disable the button when loading
       >
-        {isLoading ? "Searching..." : "Search"}{" "}
+        {loading ? "Searching..." : "Search"}{" "}
         {/* Change button text based on loading state */}
       </button>
     </div>

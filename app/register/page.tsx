@@ -1,10 +1,11 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAuthForm } from "@/components/user-register-form";
+import NavBar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Register - Imaiger",
@@ -14,25 +15,9 @@ export const metadata: Metadata = {
 export default function SignUp() {
   return (
     <>
-      <div className="md:hidden">
-        <Image
-          src="/examples/authentication-light.png"
-          width={1280}
-          height={843}
-          alt="Authentication"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/authentication-dark.png"
-          width={1280}
-          height={843}
-          alt="Authentication"
-          className="hidden dark:block"
-        />
-      </div>
       <div className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
-          href="/user/signin"
+          href="/signin"
           className={cn(
             buttonVariants({ variant: "ghost" }),
             "absolute right-4 top-4 md:right-8 md:top-8"
@@ -42,10 +27,16 @@ export default function SignUp() {
         </Link>
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
           <div className="absolute inset-0 bg-black" />
-          <div className="relative z-20 flex items-center">
-            <p className="font-Poppins text-sm font-bold bg-gradient-to-r from-amber-600 to-orange-600 text-transparent bg-clip-text sm:text-2xl xl:text-2xl">
-              imaiger
-            </p>
+          <div className="flex md:block absolute md:left-8">
+            <Link href="/">
+              <Image
+                src="/imaiger-logo.png"
+                width={74}
+                height={20}
+                alt="imaiger logo"
+                className="hover:cursor-pointer"
+              />
+            </Link>
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
