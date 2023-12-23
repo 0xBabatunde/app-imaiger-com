@@ -7,7 +7,7 @@ export interface DashboardImages {
 export const generateImages: DashboardImages[] = [
   {
     name: "Hero Image",
-    description: "Grab your visitors attention",
+    description: "Grab your visitors' attention",
     cover: "/imaiger-gallery-005.jpeg",
   },
   {

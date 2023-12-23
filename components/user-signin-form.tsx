@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 
 import type { Database } from "@/lib/database.types";
 
@@ -30,6 +30,23 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
       password,
     });
     router.push("/dashboard");
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }
+
+  async function handleGoogleSignIn() {
+    setIsLoading(true);
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        queryParams: {
+          access_type: "offline",
+          prompt: "consent",
+        },
+        redirectTo: `${location.origin}/auth/callback`,
+      },
+    });
     setIsLoading(false);
   }
 
@@ -51,6 +68,7 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
               autoComplete="email"
               autoCorrect="off"
               disabled={isLoading}
+              required
             />
           </div>
           <div className="grid gap-1">
@@ -66,9 +84,10 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
               autoCapitalize="none"
               autoCorrect="off"
               disabled={isLoading}
+              required
             />
           </div>
-          <Button disabled={isLoading}>
+          <Button type="submit" disabled={isLoading}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
@@ -86,7 +105,12 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
+      <Button
+        variant="outline"
+        type="button"
+        onClick={handleGoogleSignIn}
+        disabled={isLoading}
+      >
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (

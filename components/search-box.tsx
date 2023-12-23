@@ -1,11 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
+
+import { Icons } from "@/components/icons";
 
 export default function SearchBox() {
   const [keyword, setKeyword] = useState("");
   const [placeholder] = useState("Search...");
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [isLoading, setIsLoading] = React.useState<boolean>(false); // Add loading state
   const router = useRouter();
 
   const handleChange = (e: {
@@ -20,11 +22,11 @@ export default function SearchBox() {
     }
   };
 
-  const handleSubmit = async () => {
-    setLoading(true); // Set loading state to true
+  async function handleSubmit() {
+    setIsLoading(true); // Set loading state to true
     router.push(`/search/${keyword}`.replace(/\s+|,|--/g, "-").toLowerCase());
-    setLoading(false); // Set loading state back to false when done
-  };
+    setIsLoading(false); // Set loading state back to false when done
+  }
 
   return (
     <div className="sticky top-1 z-10">
@@ -48,7 +50,7 @@ export default function SearchBox() {
         </svg>
       </div>
       <input
-        className="block w-full p-4 pl-10 text-lg font-Poppins text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className="block w-full p-4 pl-10 text-lg font-Poppins text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-amber-600 focus:border-amber-600 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-amber-600 dark:focus:border-amber-600"
         type="search"
         id="username-search"
         value={keyword}
@@ -58,15 +60,19 @@ export default function SearchBox() {
       />
       <button
         type="submit"
-        className={`text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ${
-          loading ? "cursor-not-allowed opacity-50" : ""
+        className={`text-white absolute right-2.5 bottom-2.5 bg-black hover:bg-black/80 focus:ring-4 focus:ring-amber-600 focus:outline-none font-medium rounded-lg text-lg px-4 py-2 ${
+          isLoading ? "cursor-not-allowed opacity-50" : ""
         }`} // Add loading styles
         onClick={() => {
           handleSubmit();
         }}
-        disabled={loading} // Disable the button when loading
+        disabled={isLoading} // Disable the button when loading
       >
-        {loading ? "Searching..." : "Search"}{" "}
+        {isLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          "Search"
+        )}
         {/* Change button text based on loading state */}
       </button>
     </div>

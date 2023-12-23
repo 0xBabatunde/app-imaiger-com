@@ -5,7 +5,6 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAuthForm } from "@/components/user-register-form";
-import NavBar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Register - Imaiger",
