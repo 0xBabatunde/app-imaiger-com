@@ -9,9 +9,6 @@ type Props = {
   };
 };
 
-export const runtime = "edge";
-export const dynamic = "force-dynamic";
-
 export function generateMetadata({ params: { keyword } }: Props) {
   const keywordCleanUp = keyword.replace(/\-+/g, " ");
   return {
