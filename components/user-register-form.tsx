@@ -3,7 +3,7 @@
 import * as React from "react";
 
 //import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-//import { useRouter } from "next-nprogress-bar";
+import { useRouter } from "next-nprogress-bar";
 
 //import type { Database } from "@/lib/database.types";
 
@@ -18,7 +18,7 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
-  //const router = useRouter();
+  const router = useRouter();
   //const supabase = createClientComponentClient<Database>();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -26,6 +26,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
     setTimeout(() => {
+      router.push("/auth/register");
       setIsLoading(false);
     }, 3000);
   }
@@ -98,11 +99,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               required
             />
           </div>
-          <Button
-            type="submit"
-            formAction="/auth/register"
-            disabled={isLoading}
-          >
+          <Button type="submit" disabled={isLoading}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
