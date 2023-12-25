@@ -1,6 +1,9 @@
 import type { ImagesResults } from "@/models/Images";
 import { ImagesSchemaWithPhotos } from "@/models/Images";
 
+export const runtime = "edge";
+export const dynamic = "force-dynamic";
+
 export default async function fetchImages(
   url: string
 ): Promise<ImagesResults | undefined> {

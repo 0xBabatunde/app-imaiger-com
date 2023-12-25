@@ -1,6 +1,9 @@
 import { getPlaiceholder } from "plaiceholder";
 import type { Photo, ImagesResults } from "@/models/Images";
 
+export const runtime = "edge";
+export const dynamic = "force-dynamic";
+
 async function getBase64(imageUrl: string) {
   try {
     const res = await fetch(imageUrl);
