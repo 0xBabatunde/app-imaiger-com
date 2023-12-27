@@ -59,9 +59,9 @@ export function Sidebar({ className }: SidebarProps) {
   }, [pathname]);
 
   return (
-    <div className="sticky top-0">
+    <div className="sticky top-20">
       <div className={cn("pb-12", className)}>
-        <Link href="/">
+        {/*<Link href="/">
           <Image
             src="/imaiger-logo.png"
             width={94}
@@ -69,7 +69,7 @@ export function Sidebar({ className }: SidebarProps) {
             alt="imaiger logo"
             className="px-3"
           />
-        </Link>
+  </Link>*/}
         <div className="space-y-4 py-4">
           <div className="px-3 py-2">
             <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">

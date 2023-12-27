@@ -29,7 +29,7 @@ export default function SearchBox() {
   }
 
   return (
-    <div className="sticky top-1 z-10">
+    <div className="sticky top-20 z-10">
       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
         <svg
           width="1em"

@@ -3,6 +3,7 @@ import { Sidebar } from "@/components/sidebar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { WebpageEmptyPlaceholder } from "@/components/webpage-empty-placeholder";
+import { MobileNav } from "@/components/mobile-navbar";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 
 export const metadata: Metadata = {
@@ -12,8 +13,9 @@ export const metadata: Metadata = {
 
 export default function AnalysePage() {
   return (
-    <div className="md:block">
-      <div className="border-t">
+    <>
+      <MobileNav />
+      <div className="md:block">
         <div className="bg-background">
           <div className="grid lg:grid-cols-5">
             <Sidebar className="hidden lg:block sticky top-0" />
@@ -46,6 +48,6 @@ export default function AnalysePage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import SearchBox from "@/components/search-box";
 import { Sidebar } from "@/components/sidebar";
 import { Separator } from "@/components/ui/separator";
+import { MobileNav } from "@/components/mobile-navbar";
 
 export const metadata: Metadata = {
   title: "Search - Imaiger",
@@ -10,8 +11,9 @@ export const metadata: Metadata = {
 
 export default function SearchPage() {
   return (
-    <div className="md:block">
-      <div className="border-t">
+    <>
+      <MobileNav />
+      <div className="md:block">
         <div className="bg-background">
           <div className="grid lg:grid-cols-5">
             <Sidebar className="hidden lg:block sticky top-0" />
@@ -36,6 +38,6 @@ export default function SearchPage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
