@@ -17,12 +17,12 @@ export const metadata: Metadata = {
 export default function DashboardPage() {
   return (
     <>
-      <div className="hidden md:block">
+      <div className="">
         <div className="border-t">
           <div className="bg-background">
-            <div className="grid lg:grid-cols-5">
-              <Sidebar className="hidden lg:block sticky top-0" />
-              <div className="col-span-3 lg:col-span-4 lg:border-l">
+            <div className="grid lg:grid-cols-5 md:flex md:flex-1 md:flex-row sm:flex sm:flex-1 sm:flex-row">
+              <Sidebar className="hidden lg:block lg:w-full md:block md:w-full sticky top-0 sm:block sm:w-full" />
+              <div className="col-span-3 lg:col-span-4 md:flex md:flex-1 md:flex-col lg:border-l md:border-l sm:border-l">
                 <div className="h-full px-4 py-6 lg:px-8">
                   <div className="space-between flex items-center">
                     <div className="ml-auto mr-4">

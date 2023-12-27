@@ -12,7 +12,7 @@ export default function Verify() {
   return (
     <>
       <NavBar />
-      <div className="container relative hidden h-[400px] flex-col items-center justify-center md:grid lg:max-w-none lg:px-0">
+      <div className="container relative  h-[400px] flex-col items-center justify-center md:grid lg:max-w-none lg:px-0">
         <Card className="w-[550px]">
           <CardHeader>
             <CardTitle>Verify your Email</CardTitle>

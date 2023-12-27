@@ -15,12 +15,12 @@ export default function SignIn() {
   return (
     <>
       <NavBar />
-      <div className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:px-0">
+      <div className="container grid relative min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:px-0">
         <Link
           href="/register"
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            "absolute right-4 top-4 md:right-8 md:top-8"
+            "absolute right-4 top-4 md:right-8 md:top-8 sm-top-8"
           )}
         >
           Sign up
