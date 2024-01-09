@@ -25,7 +25,13 @@ export default function SignUp() {
           Login
         </Link>
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className="absolute inset-0 bg-black" />
+          <div className="absolute inset-0 bg-black">
+            <img
+              src="/0_2_32_N.png"
+              alt=""
+              className="w-full h-full object-cover"
+            />{" "}
+          </div>
           <div className="flex md:block absolute md:left-8">
             <Link href="/">
               <Image
