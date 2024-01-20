@@ -1,41 +1,94 @@
-import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
-import { NextResponse } from "next/server";
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
+import { NextResponse, type NextRequest } from "next/server";
 
-import type { NextRequest } from "next/server";
+export async function middleware(request: NextRequest) {
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  });
 
-export async function middleware(req: NextRequest) {
-  const res = NextResponse.next();
-
-  const supabase = createMiddlewareClient({ req, res });
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return request.cookies.get(name)?.value;
+        },
+        set(name: string, value: string, options: CookieOptions) {
+          request.cookies.set({
+            name,
+            value,
+            ...options,
+          });
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          });
+          response.cookies.set({
+            name,
+            value,
+            ...options,
+          });
+        },
+        remove(name: string, options: CookieOptions) {
+          request.cookies.set({
+            name,
+            value: "",
+            ...options,
+          });
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          });
+          response.cookies.set({
+            name,
+            value: "",
+            ...options,
+          });
+        },
+      },
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+        detectSessionInUrl: false,
+      },
+    }
+  );
 
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
   // if user is signed in and the current path is /signin redirect the user to /dashboard
-  if (user && req.nextUrl.pathname === "/signin") {
-    return NextResponse.redirect(new URL("/dashboard", req.url));
+  if (user && request.nextUrl.pathname === "/signin") {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
-  if (user && req.nextUrl.pathname === "/") {
-    return NextResponse.redirect(new URL("/dashboard", req.url));
+  if (user && request.nextUrl.pathname === "/") {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
   // if user is not signed in and the current path is not /signin redirect the user to /signin
-  if (!user && req.nextUrl.pathname !== "/signin") {
-    return NextResponse.redirect(new URL("/signin", req.url));
+  if (!user && request.nextUrl.pathname !== "/signin") {
+    return NextResponse.redirect(new URL("/signin", request.url));
   }
 
-  return res;
+  return response;
 }
 
 export const config = {
   matcher: [
-    "/",
-    "/signin",
-    "/dashboard",
-    "/search",
-    "/search/:path*",
-    "/analyse",
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * Feel free to modify this pattern to include more paths.
+     */
+    "/((?!_next/static|_next/image|favicon.ico|verify|register).*)",
   ],
 };
