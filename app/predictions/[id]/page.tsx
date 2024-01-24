@@ -1,6 +1,12 @@
-export default async function handler(req: any, res: any) {
+/*type Props = {
+  params: {
+    id: string;
+  };
+};
+
+export default async function handler({ params: { id } }: Props, res: any) {
   const response = await fetch(
-    "https://api.replicate.com/v1/predictions/" + req.query.id,
+    "https://api.replicate.com/v1/predictions/" + id,
     {
       headers: {
         Authorization: `Token ${process.env.REPLICATE_API_TOKEN}`,
@@ -17,4 +23,4 @@ export default async function handler(req: any, res: any) {
 
   const prediction = await response.json();
   res.end(JSON.stringify(prediction));
-}
+}*/
