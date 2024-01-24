@@ -1,3 +1,4 @@
+export default async function samplePage() {}
 /*type Props = {
   params: {
     id: string;

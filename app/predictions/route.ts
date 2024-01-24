@@ -1,3 +1,4 @@
+export default async function sampleRoute() {}
 /*export default async function handler(req: any, res: any) {
   const response = await fetch("https://api.replicate.com/v1/predictions", {
     method: "POST",
