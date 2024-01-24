@@ -43,6 +43,6 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  redirectTo.pathname = "/signin";
+  redirectTo.pathname = "/dashboard";
   return NextResponse.redirect(redirectTo);
 }
