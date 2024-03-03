@@ -31,7 +31,11 @@ export default function CarouselImage() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: {
+    code?: string;
+    preventDefault?: any;
+    target?: any;
+  }) => {
     e.preventDefault();
     const response = await fetch("/api/predictions", {
       method: "POST",
