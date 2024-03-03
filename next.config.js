@@ -10,6 +10,16 @@ const nextConfig = {
         ]
     },*/
     images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "replicate.com",
+            },
+            {
+                protocol: "https",
+                hostname: "replicate.delivery",
+            },
+        ],
         domains: ["images.unsplash.com", "lexica-serve-encoded-images.sharif.workers.dev"],
     }
 }

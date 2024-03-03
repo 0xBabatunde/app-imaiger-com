@@ -26,9 +26,10 @@ export default function SignUp() {
         </Link>
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
           <div className="absolute inset-0 bg-black">
-            <img
-              src="/0_2_32_N.png"
-              alt=""
+            <Image
+              src="/register-on-imaiger.webp"
+              alt="imaiger register page"
+              fill
               className="w-full h-full object-cover"
             />{" "}
           </div>

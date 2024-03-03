@@ -36,6 +36,7 @@ export const config = {
     "/dashboard",
     "/search",
     "/search/:path*",
+    "/generate/:path*",
     "/analyse",
   ],
 };

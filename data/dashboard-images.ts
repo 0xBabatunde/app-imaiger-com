@@ -2,66 +2,53 @@ export interface DashboardImages {
   name: string;
   description: string;
   cover: string;
+  href: string;
 }
 
 export const generateImages: DashboardImages[] = [
   {
-    name: "Hero Image",
+    name: "HERO IMAGE",
     description: "Grab your visitors' attention",
-    cover: "/imaiger-gallery-005.jpeg",
+    cover: "/for-you-001.webp",
+    href: "/generate/hero",
   },
   {
-    name: "Featured Image",
+    name: "FEATURED IMAGE",
     description: "For your blog posts",
-    cover: "/imaiger-gallery-011.webp",
+    cover: "/for-you-002.webp",
+    href: "/generate/featured",
   },
   {
-    name: "Carousel Image",
+    name: "CAROUSEL IMAGE",
     description: "Showcase multiple highlights",
-    cover: "/imaiger-gallery-002.jpeg",
+    cover: "/for-you-004.webp",
+    href: "/generate/carousel",
   },
   {
-    name: "Open Graph Image",
+    name: "OPEN GRAPH IMAGE",
     description: "For social media sharing",
-    cover: "/imaiger-gallery-008.jpeg",
+    cover: "/for-you-005.webp",
+    href: "/generate/social",
+  },
+  {
+    name: "BACKGROUND IMAGE",
+    description: "Get that stunning backdrop",
+    cover: "/for-you-007.webp",
+    href: "/generate/background",
+  },
+  {
+    name: "PRODUCT IMAGE",
+    description: "Bring your products to life",
+    cover: "/for-you-006.webp",
+    href: "/generate/product",
   },
 ];
 
 export const madeForYouImages: DashboardImages[] = [
   {
-    name: "Thinking Components",
-    description: "Lena Logic",
-    cover:
-      "https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80",
-  },
-  {
-    name: "Functional Fury",
-    description: "Beth Binary",
-    cover:
-      "https://images.unsplash.com/photo-1513745405825-efaf9a49315f?w=300&dpr=2&q=80",
-  },
-  {
-    name: "React Rendezvous",
-    description: "Ethan Byte",
-    cover:
-      "https://images.unsplash.com/photo-1614113489855-66422ad300a4?w=300&dpr=2&q=80",
-  },
-  {
-    name: "Stateful Symphony",
-    description: "Beth Binary",
-    cover:
-      "https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80",
-  },
-  {
-    name: "Async Awakenings",
-    description: "Nina Netcode",
-    cover:
-      "https://images.unsplash.com/photo-1468817814611-b7edf94b5d60?w=300&dpr=2&q=80",
-  },
-  {
-    name: "The Art of Reusability",
-    description: "Lena Logic",
-    cover:
-      "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
+    name: "",
+    description: "",
+    cover: "",
+    href: "",
   },
 ];

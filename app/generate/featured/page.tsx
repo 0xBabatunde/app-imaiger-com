@@ -7,13 +7,13 @@ import SearchBox from "@/components/search-box";
 import { Icons } from "@/components/icons";
 
 /*export const metadata: Metadata = {
-  title: "Generate Hero Image - Imaiger",
-  description: "Generate hero images for your web project",
+  title: "Generate Featured Image - Imaiger",
+  description: "Generate featured images for your web project",
 };*/
 
 const sleep = (ms: number | undefined) => new Promise((r) => setTimeout(r, ms));
 
-export default function HeroImage() {
+export default function FeaturedImage() {
   //const [isLoading, setIsLoading] = useState(null);
   const [keyword, setKeyword] = useState("");
   const [prediction, setPrediction] = useState(null);

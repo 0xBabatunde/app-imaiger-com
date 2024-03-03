@@ -9,8 +9,6 @@ import {
 import { useRouter } from "next-nprogress-bar";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
@@ -64,15 +62,6 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <div className="sticky top-20">
       <div className={cn("pb-12", className)}>
-        {/*<Link href="/">
-          <Image
-            src="/imaiger-logo.png"
-            width={94}
-            height={40}
-            alt="imaiger logo"
-            className="px-3"
-          />
-  </Link>*/}
         <div className="space-y-4 py-4">
           <div className="px-3 py-2">
             <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
