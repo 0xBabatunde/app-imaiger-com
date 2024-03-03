@@ -16,7 +16,7 @@ const sleep = (ms: number | undefined) => new Promise((r) => setTimeout(r, ms));
 export default function BackgroundImage() {
   //const [isLoading, setIsLoading] = useState(null);
   const [keyword, setKeyword] = useState("");
-  const [prediction, setPrediction] = useState(null);
+  const [prediction, setPrediction] = useState<any>(null);
   const [error, setError] = useState(null);
 
   const handleChange = (e: {
