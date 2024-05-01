@@ -40,6 +40,9 @@ export function Sidebar({ className }: SidebarProps) {
       case "Search":
         router.push("/search");
         break;
+      case "Profile":
+        router.push("/account");
+        break;
       case "Logout":
         await supabase.auth.signOut();
         router.refresh();
@@ -222,6 +225,7 @@ export function Sidebar({ className }: SidebarProps) {
               <Button
                 id="Profile"
                 variant="ghost"
+                onClick={handleClick}
                 className="w-full justify-start"
               >
                 <svg

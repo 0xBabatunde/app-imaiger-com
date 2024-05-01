@@ -81,10 +81,11 @@ export function MobileNav() {
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link
-                href="https://billing.stripe.com/p/login/9AQ6oL4Zs9IR6eQdQQ"
+                href="/account"
+                // href="https://billing.stripe.com/p/login/9AQ6oL4Zs9IR6eQdQQ"
                 target="_blank"
               >
-                Billing
+                Profile
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>

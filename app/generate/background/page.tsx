@@ -64,7 +64,6 @@ export default function BackgroundImage() {
         setError(prediction.detail);
         return;
       }
-      console.log({ prediction });
       setPrediction(prediction);
     }
   };

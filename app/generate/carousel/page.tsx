@@ -64,7 +64,6 @@ export default function CarouselImage() {
         setError(prediction.detail);
         return;
       }
-      console.log({ prediction });
       setPrediction(prediction);
     }
   };

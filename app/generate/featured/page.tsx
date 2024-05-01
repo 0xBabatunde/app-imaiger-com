@@ -64,7 +64,6 @@ export default function FeaturedImage() {
         setError(prediction.detail);
         return;
       }
-      console.log({ prediction });
       setPrediction(prediction);
     }
   };

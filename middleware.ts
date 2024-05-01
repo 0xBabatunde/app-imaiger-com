@@ -38,5 +38,6 @@ export const config = {
     "/search/:path*",
     "/generate/:path*",
     "/analyse",
+    "/account",
   ],
 };
