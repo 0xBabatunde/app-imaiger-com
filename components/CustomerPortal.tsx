@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useRouter, usePathname } from "next/navigation";
-import { useState } from "react";
+// import { useState } from "react";
 import { createStripePortal } from "@/utils/stripe/server";
 import Link from "next/link";
 import {
@@ -74,7 +74,7 @@ export default function CustomerPortalForm({ subscription }: Props) {
         {subscription ? (
           `${subscriptionPrice}/${subscription?.prices?.interval}`
         ) : (
-          <Link href="/">Choose your plan</Link>
+          <Link href="https://imaiger.com/pricing">Choose your plan</Link>
         )}
       </div>
     </Card>

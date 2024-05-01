@@ -1,18 +1,18 @@
 import CustomerPortalForm from "@/components/CustomerPortal";
 import { createClient } from "@/utils/supabase/server";
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
 export default async function Account() {
   const supabase = createClient();
 
-  //   const {
-  //     data: { user },
-  //   } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  //   const { data: userDetails } = await supabase
-  //     .from("users")
-  //     .select("*")
-  //     .single();
+  const { data: userDetails } = await supabase
+    .from("users")
+    .select("*")
+    .single();
 
   const { data: subscription, error } = await supabase
     .from("subscriptions")
@@ -24,9 +24,9 @@ export default async function Account() {
     console.log(error);
   }
 
-  //   if (!user) {
-  //     return redirect("/signin");
-  //   }
+  if (!user) {
+    return redirect("/signin");
+  }
 
   return (
     <section className="mb-32">
