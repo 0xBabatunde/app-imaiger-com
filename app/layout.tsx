@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Providers from "@/components/Providers";
-import MicrosoftClarity from "@/components/MicrosoftClarity";
+import Analytics from "@/components/Analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           {children}
-          <MicrosoftClarity />
+          <Analytics />
         </Providers>
       </body>
     </html>
