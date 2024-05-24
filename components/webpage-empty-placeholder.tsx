@@ -18,36 +18,47 @@ import { Separator } from "./ui/separator";
 
 export function WebpageEmptyPlaceholder() {
   const [isLoading, setIsLoading] = useState(false);
-  const [url, setUrl] = useState("");
+  const [siteUrl, setSiteUrl] = useState("");
   const [images, setImages] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isMainDialog, setIsMainDialog] = useState(false);
   const [isDialog, setIsDialog] = useState(false);
 
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUrl(e.target.value);
+    setSiteUrl(e.target.value);
   };
 
   const handleWebpageImport = async () => {
-    console.log("url is: ", url);
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(url);
-      const text = await response.text();
-      const soup = new DOMParser().parseFromString(text, "text/html");
-      const imageElements = soup.querySelectorAll("img");
-      const imageUrls = Array.from(imageElements).map((img) => img.src);
-      console.log(imageUrls);
-      setImages(imageUrls);
+      const fetchImages = await fetch("/api/get-images", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          url: siteUrl,
+        }),
+      });
+      if (!fetchImages.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data: {
+        error: any;
+        urls: string[];
+      } = await fetchImages.json();
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setImages(data.urls);
+      }
     } catch (error) {
       setError("Failed to fetch images");
     } finally {
       setIsLoading(false);
       setIsMainDialog(false);
       setIsDialog(false);
-      setUrl("");
+      setSiteUrl("");
     }
   };
 
@@ -92,7 +103,7 @@ export function WebpageEmptyPlaceholder() {
                             name="url"
                             id="url"
                             placeholder="https://example.com/example-web-page"
-                            value={url}
+                            value={siteUrl}
                             onChange={handleUrlChange}
                           />
                         </div>
@@ -100,7 +111,7 @@ export function WebpageEmptyPlaceholder() {
                     </>
                     <DialogFooter>
                       <Button
-                        disabled={!url || isLoading}
+                        disabled={!siteUrl || isLoading}
                         onClick={() => handleWebpageImport()}
                       >
                         {isLoading ? "Importing" : "Import Webpage"}
@@ -202,7 +213,7 @@ export function WebpageEmptyPlaceholder() {
                                 name="url"
                                 id="url"
                                 placeholder="https://example.com/example-web-page"
-                                value={url}
+                                value={siteUrl}
                                 onChange={handleUrlChange}
                               />
                             </div>
@@ -210,7 +221,7 @@ export function WebpageEmptyPlaceholder() {
                         </>
                         <DialogFooter>
                           <Button
-                            disabled={!url || isLoading}
+                            disabled={!siteUrl || isLoading}
                             onClick={() => handleWebpageImport()}
                           >
                             {isLoading ? "Importing" : "Import Webpage"}

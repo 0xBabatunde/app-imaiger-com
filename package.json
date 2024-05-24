@@ -19,7 +19,9 @@
     "@supabase/supabase-js": "^2.39.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "next": "13.5.4",
+    "dompurify": "^3.1.4",
+    "jsdom": "^24.0.0",
+    "next": "^14.2.3",
     "next-nprogress-bar": "^2.1.2",
     "plaiceholder": "^3.0.0",
     "radix-ui": "^1.0.1",
@@ -32,6 +34,8 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/jsdom": "^21.1.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
