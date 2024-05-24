@@ -26,7 +26,10 @@ export default function SearchPage() {
                         AI Image Search
                       </h2>
                       <p className="text-sm text-muted-foreground">
-                        Find millions of images generated with AI
+                        Find millions of images generated with AI |{" "}
+                        <span className="text-red-500 text-sm text-muted-foreground">
+                          Currently Under Maintenance **
+                        </span>
                       </p>
                     </div>
                   </div>

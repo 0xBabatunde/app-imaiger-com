@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { Sidebar } from "@/components/sidebar";
 import { MobileNav } from "@/components/mobile-navbar";
 import MadeForYou from "@/components/MadeForYou";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Dashboard - Imaiger",
@@ -25,10 +26,12 @@ export default function DashboardPage() {
               <div className="h-full px-4 py-6 lg:px-8">
                 <div className="space-between flex items-center">
                   <div className="ml-auto mr-4">
-                    <Button>
-                      <PlusCircledIcon className="mr-2 h-4 w-4" />
-                      New Image
-                    </Button>
+                    <Link href={"/generate/hero"}>
+                      <Button>
+                        <PlusCircledIcon className="mr-2 h-4 w-4" />
+                        New Image
+                      </Button>
+                    </Link>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">

@@ -284,6 +284,7 @@ export function Sidebar({ className }: SidebarProps) {
                 Support
               </Button>
               <Link
+                data-canny-link
                 href={"https://imaiger.canny.io/feature-requests"}
                 target="_blank"
               >
@@ -305,22 +306,32 @@ export function Sidebar({ className }: SidebarProps) {
                   Feature Request
                 </Button>
               </Link>
-              <Button id="Bug" variant="ghost" className="w-full justify-start">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mr-2 h-4 w-4"
+              <Link
+                data-canny-link
+                href={"https://imaiger.canny.io/feature-requests"}
+                target="_blank"
+              >
+                <Button
+                  id="Bug"
+                  variant="ghost"
+                  className="w-full justify-start"
                 >
-                  <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
-                  <circle cx="17" cy="7" r="5" />
-                </svg>
-                Report Bug
-              </Button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-2 h-4 w-4"
+                  >
+                    <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
+                    <circle cx="17" cy="7" r="5" />
+                  </svg>
+                  Report Bug
+                </Button>
+              </Link>
               <Button
                 id="Logout"
                 onClick={handleClick}

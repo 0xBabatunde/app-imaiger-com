@@ -5,6 +5,7 @@ import Image from "next/image";
 import { MobileNav } from "@/components/mobile-navbar";
 import SearchBox from "@/components/search-box";
 import { Icons } from "@/components/icons";
+import Link from "next/link";
 
 /*export const metadata: Metadata = {
   title: "Generate Hero Image - Imaiger",
@@ -80,10 +81,9 @@ export default function HeroImage() {
             <input
               className="block w-full p-4 pl-10 text-lg font-Poppins text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-amber-600 focus:border-amber-600 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-amber-600 dark:focus:border-amber-600"
               id="hero-generate"
-              disabled
               value={keyword}
               onChange={handleChange}
-              placeholder="Type in your prompt to generate...🔒"
+              placeholder="Type in your prompt to generate..."
               onKeyUp={handleKeyUp}
             />
           </div>
@@ -96,19 +96,31 @@ export default function HeroImage() {
           <div className="grid h-full items-stretch gap-6">
             <div className="md:order-1">
               <div className="flex flex-col space-y-4">
+                {prediction && prediction.output && (
+                  <Link
+                    href="https://imaiger.com/pricing"
+                    className="text-lg underline"
+                  >
+                    Subscribe to pro for higher quality images
+                  </Link>
+                )}
                 {prediction ? (
                   <div>
                     {prediction.output ? (
-                      <div className="mt-[21px] min-w-[760px] content-center rounded-md border bg-muted h-[100px] lg:h-[700px]">
-                        <Image
-                          src={prediction.output[prediction.output.length - 1]}
-                          alt="output"
-                          sizes="100vw"
-                          width={1320}
-                          height={680}
-                          className="relative top-2 left-[7px]"
-                        />
-                      </div>
+                      <>
+                        <div className="mt-[21px] min-w-[760px] content-center rounded-md border bg-muted h-[100px] lg:h-[700px]">
+                          <Image
+                            src={
+                              prediction.output[prediction.output.length - 1]
+                            }
+                            alt="output"
+                            sizes="100vw"
+                            width={1320}
+                            height={680}
+                            className="relative top-2 left-[7px]"
+                          />
+                        </div>
+                      </>
                     ) : (
                       <div className="mt-[21px] min-w-[760px] rounded-md border bg-muted h-[100px] lg:h-[700px] animate-pulse">
                         <div className="flex items-center justify-center bg-gray-500 rounded-md dark:bg-gray-700 min-w-[760px] h-[100px] lg:h-[700px]">

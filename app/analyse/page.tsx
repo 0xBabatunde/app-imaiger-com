@@ -1,10 +1,7 @@
 import { Metadata } from "next";
 import { Sidebar } from "@/components/sidebar";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { WebpageEmptyPlaceholder } from "@/components/webpage-empty-placeholder";
 import { MobileNav } from "@/components/mobile-navbar";
-import { PlusCircledIcon } from "@radix-ui/react-icons";
 
 export const metadata: Metadata = {
   title: "Analyse Webpage - Imaiger",
@@ -19,32 +16,7 @@ export default function AnalysePage() {
         <div className="bg-background">
           <div className="grid lg:grid-cols-5">
             <Sidebar className="hidden lg:block sticky top-0" />
-            <div className="col-span-3 lg:col-span-4 lg:border-l">
-              <div className="h-full px-4 py-6 lg:px-8">
-                <div className="space-between flex items-center">
-                  <div className="ml-auto mr-4">
-                    <Button>
-                      <PlusCircledIcon className="mr-2 h-4 w-4" />
-                      New Webpage
-                    </Button>
-                  </div>
-                </div>
-                <div className="h-full flex-col border-none p-0 data-[state=active]:flex">
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-1">
-                      <h2 className="text-2xl font-semibold tracking-tight">
-                        Analyse Webpage
-                      </h2>
-                      <p className="text-sm text-muted-foreground">
-                        Analyse images on your webpage with AI
-                      </p>
-                    </div>
-                  </div>
-                  <Separator className="my-4" />
-                  <WebpageEmptyPlaceholder />
-                </div>
-              </div>
-            </div>
+            <WebpageEmptyPlaceholder />
           </div>
         </div>
       </div>

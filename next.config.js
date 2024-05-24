@@ -16,14 +16,11 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "replicate.com",
-            },
-            {
-                protocol: "https",
-                hostname: "replicate.delivery",
+                hostname: "**",
+                port: "",
+                pathname: "**",
             },
         ],
-        domains: ["images.unsplash.com", "lexica-serve-encoded-images.sharif.workers.dev"],
     }
 }
 

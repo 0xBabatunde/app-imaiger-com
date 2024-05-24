@@ -1,52 +1,56 @@
-import CustomerPortalForm from "@/components/CustomerPortal";
+import { Metadata } from "next";
+import { Sidebar } from "@/components/sidebar";
+import { Separator } from "@/components/ui/separator";
 import { MobileNav } from "@/components/mobile-navbar";
-import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-export default async function Account() {
-  const supabase = createClient();
+export const metadata: Metadata = {
+  title: "Account - Imaiger",
+  description: "Manage your Imaiger account",
+};
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  const { data: userDetails } = await supabase
-    .from("users")
-    .select("*")
-    .single();
-
-  const { data: subscription, error } = await supabase
-    .from("subscriptions")
-    .select("*, prices(*, products(*))")
-    .in("status", ["trialing", "active"])
-    .maybeSingle();
-
-  if (error) {
-    console.log(error);
-  }
-
-  if (!user) {
-    return redirect("/signin");
-  }
-
+export default function AccountPage() {
   return (
     <>
       <MobileNav />
-      <section className="mb-32">
-        <div className="max-w-6xl px-4 py-8 mx-auto sm:px-6 sm:pt-24 lg:px-8">
-          <div className="sm:align-center sm:flex sm:flex-col">
-            <h1 className="text-4xl font-extrabold text-black sm:text-center sm:text-6xl">
-              Account
-            </h1>
-            <p className="max-w-2xl m-auto mt-5 text-xl text-gray-500 sm:text-center sm:text-2xl">
-              We partnered with Stripe for a simplified billing.
-            </p>
+      <div className="md:block">
+        <div className="bg-background">
+          <div className="grid lg:grid-cols-5">
+            <Sidebar className="hidden lg:block sticky top-0" />
+            <div className="col-span-3 lg:col-span-4 lg:border-l">
+              <div className="h-full px-4 py-6 lg:px-8">
+                <div className="h-full flex-col border-none p-0 data-[state=active]:flex">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-1">
+                      <h2 className="text-2xl font-semibold tracking-tight">
+                        Manage your Account
+                      </h2>
+                      <p className="text-sm text-muted-foreground">
+                        Set up billing to generate, analyse and recreate as many
+                        images as you like. You will be charged and invoiced
+                        once a month.
+                      </p>
+                    </div>
+                  </div>
+                  <Separator className="my-4" />
+                  <div className="flex flex-col items-start justify-between">
+                    <p className="pb-4 mb-2">
+                      Manage your subscription on Stripe.
+                    </p>
+                    <Link
+                      href="https://billing.stripe.com/p/login/9AQ6oL4Zs9IR6eQdQQ"
+                      target="_blank"
+                    >
+                      <Button>Open customer portal</Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="p-4">
-          <CustomerPortalForm subscription={subscription} />
-        </div>
-      </section>
+      </div>
     </>
   );
 }

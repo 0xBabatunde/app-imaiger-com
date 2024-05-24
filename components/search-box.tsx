@@ -57,6 +57,7 @@ export default function SearchBox() {
         onChange={handleChange}
         placeholder={placeholder}
         onKeyUp={handleKeyUp}
+        disabled
       />
       <button
         type="submit"
@@ -66,7 +67,8 @@ export default function SearchBox() {
         onClick={() => {
           handleSubmit();
         }}
-        disabled={isLoading} // Disable the button when loading
+        disabled
+        // disabled={isLoading} // Disable the button when loading
       >
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

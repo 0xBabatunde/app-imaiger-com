@@ -85,7 +85,7 @@ export function MobileNav() {
                 href="https://billing.stripe.com/p/login/9AQ6oL4Zs9IR6eQdQQ"
                 target="_blank"
               >
-                Profile
+                Billing
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
