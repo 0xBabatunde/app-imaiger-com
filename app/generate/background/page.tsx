@@ -1,51 +1,79 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
-
-import { MobileNav } from "@/components/mobile-navbar";
+import {
+  EllipsisVertical,
+  DownloadIcon,
+  LucideEdit,
+  CornerDownLeft,
+  Mic,
+  Paperclip,
+  ImageIcon,
+  SaveIcon,
+  LoaderCircle,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import SearchBox from "@/components/search-box";
 import { Icons } from "@/components/icons";
-import Link from "next/link";
-
-/*export const metadata: Metadata = {
-  title: "Generate Background Image - Imaiger",
-  description: "Generate background images for your web project",
-};*/
-
-const sleep = (ms: number | undefined) => new Promise((r) => setTimeout(r, ms));
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { SetStateAction, useState, useEffect } from "react";
+import { MobileNav } from "@/components/mobile-navbar";
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuGroup,
+//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuSeparator,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
 
 export default function BackgroundImage() {
-  //const [isLoading, setIsLoading] = useState(null);
-  const [keyword, setKeyword] = useState("");
+  const [signedIn, setSignedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [promptText, setPromptText] = useState("");
   const [prediction, setPrediction] = useState<any>(null);
+  const [textAutoFocus, setTextAutoFocus] = useState(false);
   const [error, setError] = useState(null);
+  const [userSignedIn, setUserSignedIn] = useState<boolean>(false);
+  // const supabase = createClient();
 
-  const handleChange = (e: {
-    target: { value: React.SetStateAction<string> };
+  const sleep = (ms: number | undefined) =>
+    new Promise((r) => setTimeout(r, ms));
+
+  const handlePromptText = (e: {
+    target: { value: SetStateAction<string> };
   }) => {
-    setKeyword(e.target.value);
+    setPromptText(e.target.value);
   };
 
-  const handleKeyUp = (e: { code: string }) => {
-    if (e.code === "Enter") {
-      handleSubmit(e);
-    }
-  };
-
-  const handleSubmit = async (e: {
-    code?: string;
-    preventDefault?: any;
-    target?: any;
-  }) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+
+    // Enhance the user prompt with Claude
+    const formData = new FormData();
+    formData.append("prompt", `${promptText}`);
+    // formData.append("game", `${game}`);
+    const firstResponse = await fetch("/api/claude", {
+      method: "POST",
+      body: formData,
+    });
+    let enhancedPrompt = await firstResponse.json();
+
+    // Send the enhanced prompt to Stable Diffusion
+    const enhancedFormData = new FormData();
+    enhancedFormData.append("prompt", `${enhancedPrompt.content[0].text}`);
+
     const response = await fetch("/api/predictions", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: e.target.value,
-      }),
+      body: enhancedFormData,
     });
     let prediction = await response.json();
     if (response.status !== 201) {
@@ -66,6 +94,27 @@ export default function BackgroundImage() {
         return;
       }
       setPrediction(prediction);
+
+      if ((await prediction.output?.length) === 3) {
+        setIsLoading(false);
+      }
+    }
+  };
+
+  const handleDownload = async (imageUrl: string, index: number) => {
+    try {
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `background_image_${index + 1}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading image:", error);
     }
   };
 
@@ -73,76 +122,169 @@ export default function BackgroundImage() {
     <>
       <MobileNav />
       <div className="md:block">
-        <div className="mx-4 my-4 grid grid-cols-3 gap-4">
-          <div className="col-span-2 sticky top-20 z-10">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <Icons.logo className="mr-2 h-4 w-4" />
-            </div>
-            <input
-              className="block w-full p-4 pl-10 text-lg font-Poppins text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-amber-600 focus:border-amber-600 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-amber-600 dark:focus:border-amber-600"
-              id="background-generate"
-              value={keyword}
-              onChange={handleChange}
-              placeholder="Type in your prompt to generate..."
-              onKeyUp={handleKeyUp}
-            />
-          </div>
-          <div className="">
-            <SearchBox />
-          </div>
-        </div>
-
         <div className="container h-full py-6 justify-center">
           <div className="grid h-full items-stretch gap-6">
             <div className="md:order-1">
               <div className="flex flex-col space-y-4">
-                {prediction && prediction.output && (
-                  <Link
-                    href="https://imaiger.com/pricing"
-                    className="text-lg underline"
-                  >
-                    Subscribe to pro for higher quality images
-                  </Link>
-                )}
-                {prediction ? (
-                  <div>
-                    {prediction.output ? (
-                      <div className="mt-[21px] min-w-[760px] content-center rounded-md border bg-muted h-[100px] lg:h-[700px]">
-                        <Image
-                          src={prediction.output[prediction.output.length - 1]}
-                          alt="output"
-                          sizes="100vw"
-                          width={1320}
-                          height={680}
-                          className="relative top-2 left-[7px]"
-                        />
-                      </div>
-                    ) : (
-                      <div className="mt-[21px] min-w-[760px] rounded-md border bg-muted h-[100px] lg:h-[700px] animate-pulse">
-                        <div className="flex items-center justify-center bg-gray-500 rounded-md dark:bg-gray-700 min-w-[760px] h-[100px] lg:h-[700px]">
-                          <Icons.image />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div
-                    role="status"
-                    className="mt-[21px] min-w-[760px] rounded-md border bg-muted h-[100px] lg:h-[700px]"
-                  >
-                    <div className="flex items-center justify-center bg-gray-500 rounded-md dark:bg-gray-700 min-w-[760px] h-[100px] lg:h-[700px]">
-                      <svg
-                        className="w-10 h-10 text-gray-200 dark:text-gray-600"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor"
-                        viewBox="0 0 20 18"
-                      >
-                        <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                      </svg>
+                <div className="flex-1 gap-4 overflow-auto mt-6">
+                  <div className="relative flex flex-col md:flex-row h-auto rounded-xl p-4 lg:col-span-2">
+                    {/* Left side buttons */}
+                    <div className="w-full md:w-16 mb-4 md:mb-0 flex flex-row md:flex-col justify-center items-center space-y-0 md:space-y-4 space-x-4 md:space-x-0">
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              onClick={() =>
+                                handleDownload(prediction?.output[1], 0)
+                              }
+                              disabled={!prediction?.output}
+                            >
+                              <DownloadIcon className="h-4 w-4" />
+                              <span className="sr-only">Download Image</span>
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent side="right">
+                            Download Image
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </div>
+                    {/* Left side buttons end*/}
+                    <div className="flex-grow">
+                      <div className="grid gap-4 relative w-full mb-8">
+                        {prediction?.output ? (
+                          <>
+                            <Image
+                              alt={`background image`}
+                              className="w-full h-auto rounded-xl"
+                              width={305}
+                              height={172}
+                              src={prediction.output[1]}
+                              style={{
+                                aspectRatio: "305/172",
+                                objectFit: "cover",
+                              }}
+                              unoptimized={true}
+                            />
+                            <div
+                              className="absolute inset-0 bg-black bg-opacity-0 rounded-xl group-hover:bg-opacity-25 flex justify-center items-center transition-opacity duration-300"
+                              style={{
+                                aspectRatio: "305/172",
+                              }}
+                            >
+                              <div className="absolute hidden group-hover:flex flex-col top-1 right-1"></div>
+                            </div>
+                          </>
+                        ) : (
+                          <div
+                            className="rounded-xl border bg-muted w-full h-auto"
+                            style={{
+                              aspectRatio: "305/172",
+                            }}
+                          >
+                            <div
+                              className="flex items-center justify-center bg-gray-500 dark:bg-gray-700 w-full h-auto rounded-xl"
+                              style={{
+                                aspectRatio: "305/172",
+                              }}
+                            >
+                              {isLoading ? (
+                                <LoaderCircle className="animate-spin" />
+                              ) : (
+                                <ImageIcon />
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      <form
+                        onSubmit={handleSubmit}
+                        className="relative overflow-hidden rounded-lg border border-gray-500 dark:border-gray-700 bg-background focus-within:ring-1 focus-within:ring-ring"
+                        x-chunk="dashboard-03-chunk-1"
+                      >
+                        <Label htmlFor="message" className="sr-only">
+                          Message
+                        </Label>
+                        <Textarea
+                          autoFocus={textAutoFocus}
+                          id="message"
+                          placeholder="Type in your prompt or describe what you want to create..."
+                          value={promptText}
+                          onChange={handlePromptText}
+                          className="min-h-12 resize-none border-0  p-3 shadow-none focus-visible:ring-0"
+                        />
+                        <div className="flex items-center p-3 pt-0">
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Button variant="ghost" size="icon" disabled>
+                                  <Paperclip className="size-4" />
+                                  <span className="sr-only">Attach file</span>
+                                </Button>
+                              </TooltipTrigger>
+                              <TooltipContent side="top">
+                                Attach File
+                              </TooltipContent>
+                            </Tooltip>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Button variant="ghost" size="icon" disabled>
+                                  <Mic className="size-4" />
+                                  <span className="sr-only">
+                                    Use Microphone
+                                  </span>
+                                </Button>
+                              </TooltipTrigger>
+                              <TooltipContent side="top">
+                                Use Microphone
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                          <Button
+                            type="submit"
+                            size="sm"
+                            className="ml-auto gap-1.5"
+                            disabled={isLoading || !promptText}
+                          >
+                            {isLoading ? "Creating..." : "Create Background"}
+                            {isLoading ? (
+                              <LoaderCircle className="size-3.5 animate-spin" />
+                            ) : (
+                              <CornerDownLeft className="size-3.5" />
+                            )}
+                          </Button>
+                        </div>
+                      </form>
+                    </div>
+                    {/* Right side buttons */}
+                    <div className="w-full md:w-16 mt-4 md:mt-0 flex flex-row md:flex-col justify-center items-center space-y-0 md:space-y-4 space-x-4 md:space-x-0">
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              onClick={() => {
+                                /* Add edit functionality */
+                              }}
+                              disabled={!prediction?.output}
+                            >
+                              <LucideEdit className="h-4 w-4" />
+                              <span className="sr-only">Edit Image</span>
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent side="left">
+                            Edit Image
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
+                    {/* Right side buttons end */}
                   </div>
-                )}
+                </div>
               </div>
             </div>
           </div>

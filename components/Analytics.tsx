@@ -26,6 +26,11 @@ export default function Analytics() {
         gtag('config', 'G-5N2TG267KE');
         `}
       </Script>
+
+      <Script
+        id="crisp-chat"
+        type="text/javascript"
+      >{`window.$crisp=[];window.CRISP_WEBSITE_ID="d8bdf6ed-9fbc-41d5-9805-29de6830188c";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}</Script>
     </>
   );
 }

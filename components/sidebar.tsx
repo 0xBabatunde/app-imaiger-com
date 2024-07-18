@@ -98,7 +98,7 @@ export function Sidebar({ className }: SidebarProps) {
                   <span id="Generate">Generate</span>
                   <HoverCard>
                     <HoverCardTrigger>
-                      <svg
+                      {/* <svg
                         width="15"
                         height="15"
                         viewBox="0 0 24 24"
@@ -108,7 +108,7 @@ export function Sidebar({ className }: SidebarProps) {
                           fill="#6b7280"
                           d="M12 13a1.49 1.49 0 0 0-1 2.61V17a1 1 0 0 0 2 0v-1.39A1.49 1.49 0 0 0 12 13Zm5-4V7A5 5 0 0 0 7 7v2a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-7a3 3 0 0 0-3-3ZM9 7a3 3 0 0 1 6 0v2H9Zm9 12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1Z"
                         />
-                      </svg>
+                      </svg> */}
                     </HoverCardTrigger>
                     <HoverCardContent className="w-50">
                       <div className="flex justify-between space-x-4">
@@ -158,7 +158,7 @@ export function Sidebar({ className }: SidebarProps) {
                   <span id="Analyse">Analyse</span>
                   <HoverCard>
                     <HoverCardTrigger>
-                      <svg
+                      {/* <svg
                         width="15"
                         height="15"
                         viewBox="0 0 24 24"
@@ -168,7 +168,7 @@ export function Sidebar({ className }: SidebarProps) {
                           fill="#6b7280"
                           d="M12 13a1.49 1.49 0 0 0-1 2.61V17a1 1 0 0 0 2 0v-1.39A1.49 1.49 0 0 0 12 13Zm5-4V7A5 5 0 0 0 7 7v2a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-7a3 3 0 0 0-3-3ZM9 7a3 3 0 0 1 6 0v2H9Zm9 12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1Z"
                         />
-                      </svg>
+                      </svg> */}
                     </HoverCardTrigger>
                     <HoverCardContent className="w-50">
                       <div className="flex justify-between space-x-4">

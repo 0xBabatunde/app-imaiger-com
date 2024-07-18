@@ -34,7 +34,7 @@ export function MobileNav() {
           />
         </Link>
 
-        <div className="mx-auto flex items-center space-x-2">
+        {/* <div className="mx-auto flex items-center space-x-2">
           <svg
             width="15"
             height="15"
@@ -54,7 +54,7 @@ export function MobileNav() {
           >
             Upgrade to unlock
           </Link>
-        </div>
+        </div> */}
 
         <DropdownMenu>
           <DropdownMenuTrigger>
