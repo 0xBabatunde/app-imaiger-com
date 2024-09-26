@@ -1,6 +1,4 @@
 import { NextRequest } from "next/server";
-import { JSDOM } from "jsdom";
-import { default as createDOMPurify } from "dompurify";
 
 export const runtime = "edge";
 interface ImageUrl {
@@ -12,12 +10,12 @@ export async function POST(request: NextRequest) {
     const { url } = (await request.json()) as ImageUrl;
     const response = await fetch(url);
     const text = await response.text();
-    const dom = new JSDOM(text);
-    const DOMPurify = createDOMPurify(dom.window as unknown as Window);
-    const cleanHTML = DOMPurify.sanitize(text);
 
-    const document = new JSDOM(cleanHTML).window.document;
-    const imageElements = document.querySelectorAll("img");
+    // Use DOMParser instead of JSDOM
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, "text/html");
+
+    const imageElements = doc.querySelectorAll("img");
     const imageUrls = Array.from(imageElements)
       .map((img) => {
         const src = (img as HTMLImageElement).src;
@@ -31,7 +29,24 @@ export async function POST(request: NextRequest) {
         return null;
       })
       .filter((url): url is string => url !== null);
-    return new Response(JSON.stringify({ urls: imageUrls }), {
+
+    // Fetch each image URL to ensure it's valid
+    const validImageUrls = await Promise.all(
+      imageUrls.map(async (imageUrl) => {
+        try {
+          const response = await fetch(imageUrl, { method: "HEAD" });
+          return response.ok ? imageUrl : null;
+        } catch {
+          return null;
+        }
+      })
+    );
+
+    const filteredImageUrls = validImageUrls.filter(
+      (url): url is string => url !== null
+    );
+
+    return new Response(JSON.stringify({ urls: filteredImageUrls }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
