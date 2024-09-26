@@ -20,8 +20,7 @@ export async function POST(request: NextRequest) {
     const imageElements = document.querySelectorAll("img");
     const imageUrls = Array.from(imageElements)
       .map((img) => {
-        const src = img.src;
-        // TODO: checks for images that are logos, images on external urls, images of small dimensions?, images on user defined url can only be fetched
+        const src = (img as HTMLImageElement).src;
         if (src.startsWith("https://")) {
           return src;
         } else if (!src.startsWith("http://")) {
@@ -31,7 +30,7 @@ export async function POST(request: NextRequest) {
         }
         return null;
       })
-      .filter((url) => url !== null);
+      .filter((url): url is string => url !== null);
     return new Response(JSON.stringify({ urls: imageUrls }), {
       status: 200,
       headers: {
@@ -39,9 +38,9 @@ export async function POST(request: NextRequest) {
         "Access-Control-Allow-Origin": "*",
       },
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error:", error);
-    return new Response(JSON.stringify({ error: error.message }), {
+    return new Response(JSON.stringify({ error: (error as Error).message }), {
       status: 500,
     });
   }
