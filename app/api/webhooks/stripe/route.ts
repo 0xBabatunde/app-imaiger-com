@@ -8,6 +8,8 @@ import {
   deletePriceRecord,
 } from "@/utils/supabase/admin";
 
+export const runtime = "edge";
+
 const relevantEvents = new Set([
   "product.created",
   "product.updated",

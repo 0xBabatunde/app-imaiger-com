@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { JSDOM } from "jsdom";
 import { default as createDOMPurify } from "dompurify";
 
+export const runtime = "edge";
 interface ImageUrl {
   url: string;
 }

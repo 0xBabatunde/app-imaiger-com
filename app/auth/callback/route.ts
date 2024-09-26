@@ -4,6 +4,8 @@ import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import { getErrorRedirect, getStatusRedirect } from "@/utils/helpers";
 
+export const runtime = "edge";
+
 export async function GET(request: NextRequest) {
   // The `/auth/callback` route is required for the server-side auth flow implemented
   // by the `@supabase/ssr` package. It exchanges an auth code for the user's session.
