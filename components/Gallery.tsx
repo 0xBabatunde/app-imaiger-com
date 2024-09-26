@@ -7,9 +7,6 @@ type Props = {
   topic?: string | undefined;
 };
 
-export const runtime = "edge";
-export const dynamic = "force-dynamic";
-
 export default async function Gallery({ topic }: Props) {
   const url = `https://lexica.art/api/v1/search?q=${topic}`.replace(
     /\-+/g,
