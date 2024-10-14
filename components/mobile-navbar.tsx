@@ -76,9 +76,9 @@ export function MobileNav() {
             <DropdownMenuItem asChild>
               <Link href="/analyse">Analyse</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
+            {/* <DropdownMenuItem asChild>
               <Link href="/search">Search</Link>
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
             <DropdownMenuItem asChild>
               <Link
                 // href="/account"

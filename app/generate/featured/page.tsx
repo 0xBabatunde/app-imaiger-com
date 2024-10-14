@@ -1,21 +1,17 @@
 "use client";
 import Image from "next/image";
 import {
-  EllipsisVertical,
   DownloadIcon,
   LucideEdit,
   CornerDownLeft,
   Mic,
   Paperclip,
   ImageIcon,
-  SaveIcon,
-  LoaderCircle,
+  Loader2Icon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import SearchBox from "@/components/search-box";
-import { Icons } from "@/components/icons";
 import {
   Tooltip,
   TooltipContent,
@@ -191,7 +187,7 @@ export default function FeaturedImage() {
                               }}
                             >
                               {isLoading ? (
-                                <LoaderCircle className="animate-spin" />
+                                <Loader2Icon className="animate-spin" />
                               ) : (
                                 <ImageIcon />
                               )}
@@ -251,7 +247,7 @@ export default function FeaturedImage() {
                           >
                             {isLoading ? "Creating..." : "Create Image"}
                             {isLoading ? (
-                              <LoaderCircle className="size-3.5 animate-spin" />
+                              <Loader2Icon className="size-3.5 animate-spin" />
                             ) : (
                               <CornerDownLeft className="size-3.5" />
                             )}

@@ -195,6 +195,7 @@ export function Sidebar({ className }: SidebarProps) {
                 variant={search ? "secondary" : "ghost"}
                 onClick={handleClick}
                 className="w-full justify-start"
+                disabled
               >
                 <svg
                   width="1em"
