@@ -1,16 +1,33 @@
 import { Metadata } from "next";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
+import {
+  getUserDetails,
+  getSubscription,
+  getUser,
+} from "@/utils/supabase/queries";
 import { Sidebar } from "@/components/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { MobileNav } from "@/components/mobile-navbar";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Account - Imaiger",
   description: "Manage your Imaiger account",
 };
 
-export default function AccountPage() {
+export default async function AccountPage() {
+  const supabase = createClient();
+  const [user, userDetails, subscription] = await Promise.all([
+    getUser(supabase),
+    getUserDetails(supabase),
+    getSubscription(supabase),
+  ]);
+
+  if (!user) {
+    return redirect("/signin");
+  }
   return (
     <>
       <MobileNav />
@@ -36,7 +53,9 @@ export default function AccountPage() {
                   <Separator className="my-4" />
                   <div className="flex flex-col items-start justify-between">
                     <p className="pb-4 mb-2">
-                      Manage your subscription on Stripe.
+                      Welcome {userDetails?.full_name ?? ""}, Manage your
+                      subscription on Stripe. Your current subscription is{" "}
+                      {subscription}
                     </p>
                     <Link
                       href="https://billing.stripe.com/p/login/9AQ6oL4Zs9IR6eQdQQ"

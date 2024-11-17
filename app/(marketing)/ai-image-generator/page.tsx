@@ -1,56 +1,33 @@
-// import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import MarketingNavBar from "@/components/marketing/NavBar";
-import FooterBar from "../components/marketing/FooterBar";
+import FooterBar from "@/components/marketing/FooterBar";
 import Faq from "@/components/marketing/Faq";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Image Generator for Website - Imaiger",
+  description:
+    "Try out the best AI image generator tool for websites. Generate images with cutting edge artificial intelligence technology.",
+};
 
 export default function Home() {
   return (
     <>
-      {/* <Head>
-        <title>
-          Imaiger: Best Online Platform to Generate AI Images for Website
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="robots"
-          content="follow, index, max-snippet:-1, max-image-preview:standard"
-        />
-        <meta
-          name="description"
-          content="Try out the best AI generated image tool for websites. Analyse and generate images with cutting edge artificial intelligence technology."
-          key="desc"
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <script
-          defer
-          data-domain="imaiger.com"
-          src="https://plausible.io/js/script.js"
-        ></script>
-      </Head> */}
-
       <MarketingNavBar />
       <div className="min-h-screen flex-[1] flex flex-col items-center px-2 justify-content-top">
         <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
           <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-            <div className="rounded-2xl bg-muted border border-amber-600 px-4 py-1.5 text-sm font-medium text-white">
-              <Link href="/ai-image-search" target="_blank" rel="noreferrer">
-                Looking for AI Image Search? Go here
-              </Link>
-            </div>
             <h1 className="font-bold bg-gradient-to-r from-orange-600 to-amber-400 text-transparent bg-clip-text text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-              Captivate your website visitors with stunning AI Images.
+              AI Image Generator
             </h1>
             <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8 text-white">
               Meet Imaiger, the ultimate platform for creators with zero AI
-              experience who want to unlock the power of AI-generated images for
-              their websites.
+              experience who want to create AI images.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link
                 href="/pricing"
-                target="_blank"
                 rel="noreferrer"
                 className="block w-full rounded border border-amber-600 bg-white px-12 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
               >
@@ -202,46 +179,6 @@ export default function Home() {
                     blog.
                   </p>
                 </article>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="analyse">
-          <div className="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:h-screen lg:grid-cols-2">
-              <div className="relative flex items-center bg-gray-900">
-                <div className="p-8 sm:p-16 lg:p-14">
-                  <h2 className="text-2xl text-gray-200 font-bold sm:text-3xl">
-                    Analyse and improve images on your page with AI.
-                  </h2>
-
-                  <p className="mt-4 text-gray-400">
-                    Every image is intended to complement the story of your page
-                    content. Our platform is built to analyse every image
-                    present on your website to provide suggestions on where
-                    improvements can be made. Our AI also identifies where you
-                    can represent your content better with images.
-                  </p>
-
-                  <Link
-                    href="/pricing"
-                    className="mt-8 inline-block rounded border border-amber-600 bg-white px-12 py-3 text-sm font-medium text-black hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-indigo-500"
-                  >
-                    Analyse
-                  </Link>
-                </div>
-              </div>
-
-              <div className="relative z-10 lg:py-16">
-                <div className="relative h-64 sm:h-80 lg:h-full">
-                  <Image
-                    alt="analyse images with AI"
-                    layout="fill"
-                    src="/imaiger-gallery-011.webp"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  ></Image>
-                </div>
               </div>
             </div>
           </div>
