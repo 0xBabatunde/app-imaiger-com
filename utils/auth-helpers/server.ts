@@ -217,7 +217,7 @@ export async function signUp(formData: FormData) {
     );
   } else if (data.user) {
     redirectPath = getStatusRedirect(
-      "/pricing",
+      "/verify",
       "Success!",
       "Please check your email for a confirmation link. You may now close this tab."
     );

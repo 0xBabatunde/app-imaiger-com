@@ -148,8 +148,8 @@ export default function PricingTable({ user, products, subscription }: Props) {
               <div className="h-3 w-3 rounded-full bg-zinc-100"></div>
             </div>
             <div className="account-and-description">
-              <h3 className="font-semibold text-gray-900">Standard</h3>
-              <p className="text-sm text-gray-600">Perfect plan for Starters</p>
+              <h3 className="font-semibold text-gray-900">Creator</h3>
+              <p className="text-sm text-gray-600">Perfect plan for Creators</p>
             </div>
 
             <div className="tier-and-description">
@@ -204,7 +204,7 @@ export default function PricingTable({ user, products, subscription }: Props) {
               </p>
             </div>
             <div className="account-and-description">
-              <h3 className="font-semibold">Standard +</h3>
+              <h3 className="font-semibold">Creator +</h3>
               <p className="text-sm">Perfect plan for Professionals</p>
             </div>
             <div className="tier-and-description">
