@@ -23,7 +23,7 @@ export default function SearchBoxIndex() {
           onKeyUp={handleSubmit}
           autoFocus={true}
           placeholder="Search..."
-          className="w-[522px] h-12 text-[inherit] [outline:0] shadow-[2px_4px_8px_0_rgba(0,0,0,0.15)] transition-all duration-300 ease-[ease] m-auto pl-7 pr-[58px] py-0 rounded-[30px] border-[none] border-[1.3px] border-solid border-[#f2f2f2];"
+          className="w-[522px] h-12 text-[inherit] [outline:0] shadow-[2px_4px_8px_0_rgba(0,0,0,0.15)] transition-all duration-300 m-auto pl-7 pr-[58px] py-0 rounded-[30px] border-[none] border-[1.3px] border-solid border-[#f2f2f2];"
         />
       </div>
     </>

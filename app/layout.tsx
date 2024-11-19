@@ -9,6 +9,8 @@ import Providers from "@/components/Providers";
 import Analytics from "../components/Analytics";
 import CookieConsent from "@/components/CookieConsent";
 
+export const runtime = "edge";
+
 const inter = Inter({ subsets: ["latin"] });
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
