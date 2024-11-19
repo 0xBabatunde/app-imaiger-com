@@ -1,7 +1,9 @@
 "use client";
 
-import * as React from "react";
-
+import React, { useState } from "react";
+import { signInWithPassword } from "@/utils/auth-helpers/server";
+import { signInWithOAuth } from "@/utils/auth-helpers/client";
+import { handleRequest } from "@/utils/auth-helpers/client";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next-nprogress-bar";
 
@@ -13,46 +15,40 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserSignInFormProps extends React.HTMLAttributes<HTMLDivElement> {
+  redirectMethod: string;
+}
 
-export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
+export function UserSignInForm({
+  redirectMethod,
+  className,
+  ...props
+}: UserSignInFormProps) {
+  const router = useRouter();
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
-  const router = useRouter();
-  const supabase = createClientComponentClient<Database>();
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  async function handleSignIn(event: React.SyntheticEvent) {
-    event.preventDefault();
-    setIsLoading(true);
-    await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    router.push("/dashboard");
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }
+  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    await handleRequest(
+      e,
+      signInWithPassword,
+      redirectMethod === "client" ? router : null
+    );
+    setIsSubmitting(false);
+  };
 
-  async function handleGoogleSignIn() {
-    setIsLoading(true);
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        queryParams: {
-          access_type: "offline",
-          prompt: "consent",
-        },
-        redirectTo: `${location.origin}/auth/callback`,
-      },
-    });
-    setIsLoading(false);
-  }
+  const handleGoogleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+    setIsSubmitting(true);
+    await signInWithOAuth(e);
+    setIsSubmitting(false);
+  };
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
-      <form onSubmit={handleSignIn}>
+      <form onSubmit={(e) => handleSignIn(e)}>
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
@@ -60,6 +56,7 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
             </Label>
             <Input
               id="email"
+              name="email"
               placeholder="name@example.com"
               type="email"
               onChange={(e) => setEmail(e.target.value)}
@@ -67,7 +64,7 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
-              disabled={isLoading}
+              disabled={isSubmitting}
               required
             />
           </div>
@@ -77,18 +74,20 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
             </Label>
             <Input
               id="password"
+              name="password"
               placeholder="••••••••••"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               autoCapitalize="none"
               autoCorrect="off"
-              disabled={isLoading}
+              autoComplete="current-password"
+              disabled={isSubmitting}
               required
             />
           </div>
-          <Button type="submit" disabled={isLoading}>
-            {isLoading && (
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
             Sign in with Email
@@ -105,19 +104,16 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
           </span>
         </div>
       </div>
-      <Button
-        variant="outline"
-        type="button"
-        onClick={handleGoogleSignIn}
-        disabled={isLoading}
-      >
-        {isLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.google className="mr-2 h-4 w-4" />
-        )}{" "}
-        Google
-      </Button>
+      <form onSubmit={(e) => handleGoogleSignIn(e)}>
+        <Button variant="outline" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Icons.google className="mr-2 h-4 w-4" />
+          )}{" "}
+          Google
+        </Button>
+      </form>
     </div>
   );
 }

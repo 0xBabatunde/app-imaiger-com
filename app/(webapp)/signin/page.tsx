@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-
+import { getRedirectMethod } from "@/utils/auth-helpers/settings";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { UserSignInForm } from "@/components/user-signin-form";
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function SignIn() {
+  const redirectMethod = getRedirectMethod();
   return (
     <>
       <NavBar />
@@ -35,7 +36,7 @@ export default function SignIn() {
                 Enter your details below to login to your account
               </p>
             </div>
-            <UserSignInForm />
+            <UserSignInForm redirectMethod={redirectMethod} />
             <p className="px-8 text-center text-sm text-muted-foreground">
               By clicking continue, you agree to our{" "}
               <Link

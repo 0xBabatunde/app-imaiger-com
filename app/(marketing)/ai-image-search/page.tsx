@@ -26,123 +26,115 @@ export default function AiImageSearch() {
         </section>
         <SearchBoxIndex />
 
-        <section>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="grid gap-4">
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/water-throne.jpeg"
-                  alt=""
-                  height={768}
-                  width={512}
-                />
-              </div>
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/car-in-sunset.jpeg"
-                  alt=""
-                  height={624}
-                  width={624}
-                />
-              </div>
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/city-scenes.jpeg"
-                  alt=""
-                  height={768}
-                  width={512}
-                />
-              </div>
+        <section className="container mx-auto px-4">
+          <div className="columns-2 md:columns-4 gap-4 space-y-4">
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/water-throne.jpeg"
+                alt=""
+                height={768}
+                width={512}
+              />
             </div>
-            <div className="grid gap-4">
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/robotic-bunny.jpeg"
-                  alt=""
-                  height={624}
-                  width={624}
-                />
-              </div>
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/cave.jpeg"
-                  alt=""
-                  height={768}
-                  width={512}
-                />
-              </div>
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/city-of-la.jpeg"
-                  alt=""
-                  height={374}
-                  width={624}
-                />
-              </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/car-in-sunset.jpeg"
+                alt=""
+                height={624}
+                width={624}
+              />
             </div>
-            <div className="grid gap-4">
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/natural-dog.jpeg"
-                  alt=""
-                  height={640}
-                  width={512}
-                />
-              </div>
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/house-in-the-woods.jpeg"
-                  alt=""
-                  height={374}
-                  width={624}
-                />
-              </div>
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/minimalistic-house.jpeg "
-                  alt=""
-                  height={624}
-                  width={624}
-                />
-              </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/city-scenes.jpeg"
+                alt=""
+                height={768}
+                width={512}
+              />
             </div>
-            <div className="grid gap-4">
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/garden.jpeg"
-                  alt=""
-                  height={768}
-                  width={512}
-                />
-              </div>
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/deep-orb.jpeg"
-                  alt=""
-                  height={624}
-                  width={624}
-                />
-              </div>
-              <div>
-                <Image
-                  className="h-auto max-w-full rounded-lg"
-                  src="/orange-cat.jpeg"
-                  alt=""
-                  height={512}
-                  width={512}
-                />
-              </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/robotic-bunny.jpeg"
+                alt=""
+                height={624}
+                width={624}
+              />
+            </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/cave.jpeg"
+                alt=""
+                height={768}
+                width={512}
+              />
+            </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/city-of-la.jpeg"
+                alt=""
+                height={374}
+                width={624}
+              />
+            </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/natural-dog.jpeg"
+                alt=""
+                height={640}
+                width={512}
+              />
+            </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/house-in-the-woods.jpeg"
+                alt=""
+                height={374}
+                width={624}
+              />
+            </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/minimalistic-house.jpeg"
+                alt=""
+                height={624}
+                width={624}
+              />
+            </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/garden.jpeg"
+                alt=""
+                height={768}
+                width={512}
+              />
+            </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/deep-orb.jpeg"
+                alt=""
+                height={624}
+                width={624}
+              />
+            </div>
+            <div className="break-inside-avoid">
+              <Image
+                className="h-auto w-full rounded-lg"
+                src="/orange-cat.jpeg"
+                alt=""
+                height={512}
+                width={512}
+              />
             </div>
           </div>
         </section>
@@ -150,14 +142,14 @@ export default function AiImageSearch() {
         <section>
           <div className="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
             <div className="lg:py-16">
-              <article className="space-y-4 text-gray-400">
+              <article className="space-y-4 text-gray-600">
                 <p>
                   Use Imaiger to search and generate AI images in seconds. Our
                   sophisticated AI image search delivers accuracy in its results
                   every time. It&apos;s never been easier to find quality images
                   for any purpose.
                 </p>
-                <h2 className="text-xl font-bold leading-tight sm:text-4xl mb-2 mt-4">
+                <h2 className="text-xl font-bold leading-tight sm:text-4xl mb-2 mt-4 text-gray-900">
                   Sophisticated AI Image Search Engine
                 </h2>
                 <p>
@@ -177,7 +169,7 @@ export default function AiImageSearch() {
                   the results you need and none of those you don&apos;t with a
                   specialized search engine.
                 </p>
-                <h2 className="text-xl font-bold leading-tight sm:text-4xl mb-2 mt-4">
+                <h2 className="text-xl font-bold leading-tight sm:text-4xl mb-2 mt-4 text-gray-900">
                   Generate AI Image
                 </h2>
                 <p>
@@ -190,7 +182,7 @@ export default function AiImageSearch() {
                   unique images that match your needs. Keep customizing and
                   tweaking your images to get exactly what you want.
                 </p>
-                <h2 className="text-xl font-bold leading-tight sm:text-4xl mb-2 mt-4">
+                <h2 className="text-xl font-bold leading-tight sm:text-4xl mb-2 mt-4 text-gray-900">
                   Get More from AI Images
                 </h2>
                 <p>
@@ -206,7 +198,7 @@ export default function AiImageSearch() {
                   your business. You can find AI images of all types with our
                   cutting-edge technology.
                 </p>
-                <h2 className="text-xl font-bold leading-tight sm:text-4xl mb-2 mt-4">
+                <h2 className="text-xl font-bold leading-tight sm:text-4xl mb-2 mt-4 text-gray-900">
                   How to Use AI Image Search and Generation
                 </h2>
                 <p>

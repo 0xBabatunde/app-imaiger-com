@@ -18,11 +18,11 @@ export default function Terms() {
         <div className="bg-opacity-30 py-10 sm:py-16 lg:py-24">
           <div className="flex flex-wrap  items-center justify-center o-hidden">
             <div className="sm:w-3/4 pr-4 pl-4">
-              <h1 className="text-3xl font-bold leading-[1.1] tracking-tighter sm:text-5xl md:text-6xl bg-gradient-to-r from-orange-600 to-amber-400 text-transparent bg-clip-text">
+              <h1 className="text-3xl font-bold leading-[1.1] tracking-tighter sm:text-5xl md:text-6xl text-gray-900">
                 Terms &amp; Conditions
               </h1>
 
-              <p className="text-xl font-light">
+              <p className="text-xl font-light text-gray-700">
                 Imaiger is an app to help you search and generate AI images
                 using cutting-edge artificial intelligence technology. But to
                 use our app, you need to agree to our terms and conditions. This
@@ -30,7 +30,7 @@ export default function Terms() {
                 website or any of our services. Please keep reading!
               </p>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 Effective as of 22 December, 2022
               </p>
             </div>
@@ -41,9 +41,9 @@ export default function Terms() {
         <div className="bg-opacity-30 py-10 sm:py-16 lg:py-24">
           <div className="flex flex-wrap  justify-center">
             <div className="sm:w-3/4 pr-4 pl-4">
-              <h3>INTRODUCTION</h3>
+              <h3 className="text-gray-900">INTRODUCTION</h3>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 These Website Standard Terms And Conditions (these
                 &ldquo;Terms&rdquo; or these &ldquo;Website Terms And
                 Conditions&rdquo;) contained herein on imaiger.com (hereafter
@@ -58,35 +58,35 @@ export default function Terms() {
                 objection to any of these Website Terms And Conditions.
               </p>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 This Website is not for use by any minors (defined as those who
                 are not at least 18 years of age), and you must not use this
                 Website if you are a minor.
               </p>
 
-              <h4>INTELLECTUAL PROPERTY</h4>
+              <h4 className="text-gray-900">INTELLECTUAL PROPERTY</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 Other than content you own, which you may have opted to include
                 on this Website, under these Terms, Imaiger and/or its licensors
                 own all rights to the intellectual property and material
                 contained in this Website, and all such rights are reserved.
               </p>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 You are granted a limited license only, subject to the
                 restrictions provided in these Terms, for purposes of viewing
                 the material contained on this Website.
               </p>
 
-              <h4>LIMITATIONS OF USE</h4>
+              <h4 className="text-gray-900">LIMITATIONS OF USE</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 You are hereby restricted from all of the following when using
                 the Website:
               </p>
 
-              <ol className="text-xs">
+              <ol className="text-xs text-gray-700">
                 <li>publishing any Website material in any media;</li>
                 <li>
                   selling, sublicensing and/or otherwise commercializing any
@@ -118,7 +118,7 @@ export default function Terms() {
                 </li>
               </ol>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 Certain areas of this Website are restricted from access by you
                 and Imaiger may further restrict access by you to any areas of
                 this Website, at any time, in its sole and absolute discretion.
@@ -127,9 +127,11 @@ export default function Terms() {
                 information.
               </p>
 
-              <h4>CONTENT DISPLAYED ON THIS WEBSITE</h4>
+              <h4 className="text-gray-900">
+                CONTENT DISPLAYED ON THIS WEBSITE
+              </h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 In these Website Standard Terms And Conditions, &ldquo;Your
                 Content&rdquo; shall mean any audio, video, text, images or
                 other material you choose to display on this Website. With
@@ -139,16 +141,16 @@ export default function Terms() {
                 translate and distribute it in any and all media.
               </p>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 Your Content must be your own and must not be infringing on any
                 third party&rsquo;s rights. Imaiger reserves the right to remove
                 any of Your Content from this Website at any time, and for any
                 reason, without notice.
               </p>
 
-              <h4>NO WARRANTY OR GUARANTEE</h4>
+              <h4 className="text-gray-900">NO WARRANTY OR GUARANTEE</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 This Website is provided &ldquo;as is,&rdquo; with all faults,
                 and Imaiger makes no express or implied representations or
                 warranties, of any kind related to this Website or the materials
@@ -157,9 +159,9 @@ export default function Terms() {
                 to you.
               </p>
 
-              <h4>LIABILITY WAIVER</h4>
+              <h4 className="text-gray-900">LIABILITY WAIVER</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 In no event shall Imaiger, nor any of its officers, directors
                 and employees, be liable to you for anything arising out of or
                 in any way connected with your use of this Website, whether such
@@ -170,9 +172,9 @@ export default function Terms() {
                 Website.
               </p>
 
-              <h4>INDEMNIFICATION</h4>
+              <h4 className="text-gray-900">INDEMNIFICATION</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 You hereby indemnify to the fullest extent Imaiger from and
                 against any and all liabilities, costs, demands, causes of
                 action, damages and expenses (including reasonable
@@ -180,9 +182,9 @@ export default function Terms() {
                 your breach of any of the provisions of these Terms.
               </p>
 
-              <h4>SEVERABILITY</h4>
+              <h4 className="text-gray-900">SEVERABILITY</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 If any provision of these Terms is found to be unenforceable or
                 invalid under any applicable law, such unenforceability or
                 invalidity shall not render these Terms unenforceable or invalid
@@ -190,18 +192,18 @@ export default function Terms() {
                 affecting the remaining provisions herein.
               </p>
 
-              <h4>REVISIONS</h4>
+              <h4 className="text-gray-900">REVISIONS</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 Imaiger is permitted to revise these Terms at any time as it
                 sees fit, and by using this Website you are expected to review
                 such Terms on a regular basis to ensure you understand all terms
                 and conditions governing use of this Website.
               </p>
 
-              <h4>AGREEMENT</h4>
+              <h4 className="text-gray-900">AGREEMENT</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 These Terms, including any legal notices and disclaimers
                 contained on this Website, constitute the entire agreement
                 between Imaiger and you in relation to your use of this Website,

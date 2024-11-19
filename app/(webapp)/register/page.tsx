@@ -6,12 +6,32 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAuthForm } from "@/components/user-register-form";
 
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { getRedirectMethod } from "@/utils/auth-helpers/settings";
+
 export const metadata: Metadata = {
   title: "Register - Imaiger",
   description: "Create a new Imaiger account.",
 };
 
 export default function SignUp() {
+  const redirectMethod = getRedirectMethod();
+
+  // Check if the user is already logged in and redirect to the dashboard page if so
+  // const supabase = createClient();
+
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
+
+  // if (user) {
+  //   return redirect("/dashboard");
+  // } else if (!user) {
+  //   return redirect("/register");
+  // }
+
   return (
     <>
       <div className="container grid relative min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -65,7 +85,7 @@ export default function SignUp() {
                 Fill the form below to create your account
               </p>
             </div>
-            <UserAuthForm />
+            <UserAuthForm redirectMethod={redirectMethod} />
             <p className="px-8 text-center text-sm text-muted-foreground">
               By clicking continue, you agree to our{" "}
               <Link

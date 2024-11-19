@@ -17,11 +17,11 @@ export default function Privacy() {
         <div className="bg-opacity-30 py-10 sm:py-16 lg:py-24">
           <div className="flex flex-wrap  items-center justify-center o-hidden">
             <div className="sm:w-3/4 pr-4 pl-4">
-              <h1 className="text-3xl font-bold leading-[1.1] tracking-tighter sm:text-5xl md:text-6xl bg-gradient-to-r from-orange-600 to-amber-400 text-transparent bg-clip-text">
+              <h1 className="text-3xl font-bold leading-[1.1] tracking-tighter sm:text-5xl md:text-6xl text-gray-900">
                 Privacy Policy
               </h1>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 Privacy is a fundamental human right. We will uphold the privacy
                 of our users by fighting against ads, trackers and other
                 impingements on privacy. We will never profit by monetizing your
@@ -29,7 +29,7 @@ export default function Privacy() {
                 delivering a great product & service.
               </p>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 Our commitment to privacy and data protection is reflected in
                 this Privacy Statement which describes how we collect and
                 process &quot;personal information&quot; that identifies you,
@@ -38,7 +38,7 @@ export default function Privacy() {
                 personal information with non-personal information, we&apos;ll
                 consider that combination to be personal information.
               </p>
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 References to our &quot;Services&quot; at IMAIGER (imaiger.com)
                 in this statement include our website, apps, and other products
                 and services. This statement applies to our Services that
@@ -54,9 +54,9 @@ export default function Privacy() {
         <div className="bg-opacity-30 py-10 sm:py-16 lg:py-24">
           <div className="flex flex-wrap  justify-center">
             <div className="sm:w-3/4 pr-4 pl-4">
-              <h3>Information Gathering</h3>
+              <h3 className="text-gray-900">Information Gathering</h3>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 We learn information about you when: You directly provide it to
                 us. For example, we collect: Name and contact information. We
                 collect details such as name and email address. Payment
@@ -96,22 +96,22 @@ export default function Privacy() {
                 general geographic location based on your IP address.
               </p>
 
-              <h4>Information Use</h4>
+              <h4 className="text-gray-900">Information Use</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 We use each category of personal information about you:
               </p>
 
-              <ol className="text-xl font-light mb-4">
+              <ol className="text-xl font-light mb-4 text-gray-700">
                 <li>To provide you with our Services</li>
                 <li>To improve and develop our Services</li>
                 <li>To communicate with you</li>
                 <li>To provide customer support</li>
               </ol>
 
-              <h4>Information Sharing</h4>
+              <h4 className="text-gray-900">Information Sharing</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 We share information about you: When we&apos;ve asked & received
                 your consent to share it. As needed, including to third-party
                 service providers, to process or provide Services or products to
@@ -128,7 +128,7 @@ export default function Privacy() {
                 structure or status to a successor or affiliate.
               </p>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 Please note that some of our Services include integrations,
                 references, or links to services provided by third parties whose
                 privacy practices differ from ours. If you provide personal
@@ -137,14 +137,14 @@ export default function Privacy() {
                 privacy statements.
               </p>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 Finally, we may share non-personal information in accordance
                 with applicable law.
               </p>
 
-              <h4>Information Protection</h4>
+              <h4 className="text-gray-900">Information Protection</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 We implement physical, business and technical security measures
                 to safeguard your personal information. In the event of a
                 security breach, we&apos;ll notify you so that you can take
@@ -153,9 +153,9 @@ export default function Privacy() {
                 for. After that, we destroy it unless required by law.
               </p>
 
-              <h4>Other Information</h4>
+              <h4 className="text-gray-900">Other Information</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 We retain personal data for as long as necessary to provide the
                 services and fulfill the transactions you have requested, comply
                 with our legal obligations, resolve disputes, enforce our
@@ -177,12 +177,12 @@ export default function Privacy() {
                 information, please contact us to have such information removed.
               </p>
 
-              <h4>
+              <h4 className="text-gray-900">
                 European Economic Area, United Kingdom, Swiss and California
                 users
               </h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 The following rights are granted under the European General Data
                 Protection Regulation (“GDPR”) and California Consumer Privacy
                 Act (“CCPA”). Imaiger applies these rights to all users of our
@@ -192,7 +192,7 @@ export default function Privacy() {
                 your personal information. The right to exercise your privacy
                 rights without being discriminated against.
               </p>
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 EEA, UK, and Swiss Users: Our lawful bases for collecting and
                 processing personal information under the GDPR include:
                 Performing our contract with you and providing our services.
@@ -203,7 +203,7 @@ export default function Privacy() {
                 we ask for your consent to process your information, you can
                 always withdraw this consent.
               </p>
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 Under the GDPR, EEA, UK, and Swiss users have additional rights:
                 The right to request correction or erasure of personal
                 information. The right to object to processing your personal
@@ -218,7 +218,7 @@ export default function Privacy() {
                 complaint with a supervisory authority, but we encourage you to
                 first contact us with any questions or concerns.
               </p>
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 California Users: Under the CCPA, California residents have
                 additional rights: The right to request personal information
                 about to be deleted, subject to several exceptions. The right to
@@ -238,18 +238,18 @@ export default function Privacy() {
                 information necessary to verify your account.
               </p>
 
-              <h4>Exercising Your Rights</h4>
+              <h4 className="text-gray-900">Exercising Your Rights</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 To exercise the rights described above or if you have a question
                 or concern, please contact us at privacy@imaiger.com and we will
                 aim to address or resolve it. If we cannot, you have the right
                 to lodge a complaint with your local data protection authority.
               </p>
 
-              <h4>Changes</h4>
+              <h4 className="text-gray-900">Changes</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 We may need to change this Privacy Statement and our notices
                 from time to time. Any updates will be posted online with an
                 effective date. Continued use of our services after the
@@ -257,9 +257,9 @@ export default function Privacy() {
                 changes.
               </p>
 
-              <h4>Contact Us</h4>
+              <h4 className="text-gray-900">Contact Us</h4>
 
-              <p className="text-xl font-light mb-4">
+              <p className="text-xl font-light mb-4 text-gray-700">
                 You can get in touch by emailing us at privacy@imaiger.com.
               </p>
             </div>

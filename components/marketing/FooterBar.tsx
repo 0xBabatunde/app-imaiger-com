@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function FooterBar() {
   return (
@@ -246,9 +247,12 @@ export default function FooterBar() {
           </ul>
 
           <div className="mt-16 sm:flex sm:items-center sm:justify-between">
-            <p className="flex justify-center sm:justify-start font-Poppins mt-4 mb-6 text-sm font-bold bg-gradient-to-r from-orange-600 to-amber-400 text-transparent bg-clip-text lg:mt-8 sm:text-2xl xl:text-2xl">
-              imaiger
-            </p>
+            <Image
+              src="/imaiger-logo.png"
+              width={74}
+              height={20}
+              alt="imaiger logo"
+            />
 
             <p className="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-right">
               Copyright &copy; 2024. All rights reserved. A product of Dranft

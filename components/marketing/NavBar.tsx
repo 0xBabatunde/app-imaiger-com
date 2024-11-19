@@ -1,21 +1,25 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 const MarketingNavBar = () => {
   const [navbar, setNavbar] = useState(false);
 
   return (
-    <div className="w-full shadow pb-6 lg:pb-0">
-      <nav>
+    <div className="w-full bg-white shadow">
+      <nav className="container mx-auto">
         <div className="justify-between px-4 mx-auto md:items-center md:flex md:px-8">
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
-              <Link href="/" legacyBehavior>
-                <p className="font-Poppins mt-4 mb-6 text-sm font-bold bg-gradient-to-r from-orange-600 to-amber-400 inline-block text-transparent bg-clip-text lg:mt-8 sm:text-2xl xl:text-2xl hover:cursor-pointer">
-                  imaiger
-                </p>
+              <Link href="/">
+                <Image
+                  src="/imaiger-logo.png"
+                  width={74}
+                  height={20}
+                  alt="imaiger logo"
+                />
               </Link>
               <div className="md:hidden">
                 <button
@@ -61,47 +65,27 @@ const MarketingNavBar = () => {
                 navbar ? "block" : "hidden"
               }`}
             >
-              <ul className="items-center justify-evenly space-y-8 md:flex md:space-x-6 md:space-y-0">
-                <li className="text-white font-medium">
+              <ul className="items-center justify-evenly space-y-8 md:flex md:space-x-8 md:space-y-0">
+                <li className="text-gray-700 hover:text-amber-600 font-medium transition-colors">
                   <Link href="/ai-image-search">Search</Link>
                 </li>
-                <li className="text-white font-medium">
+                <li className="text-gray-700 hover:text-amber-600 font-medium transition-colors">
                   <Link href="/ai-image-generator">Generate</Link>
                 </li>
-                <li className="text-white font-medium">
+                <li className="text-gray-700 hover:text-amber-600 font-medium transition-colors">
                   <Link href="/#analyse">Analyse</Link>
                 </li>
-                <li className="text-white font-medium">
+                <li className="text-gray-700 hover:text-amber-600 font-medium transition-colors">
                   <Link href="/pricing">Pricing</Link>
                 </li>
-                {/* {user ? (
-                  <div className="bg-gradient-to-r from-black to-black inline-block rounded-full p-px group">
-                    <button
-                      onClick={async () => {
-                        router.push("/dashboard");
-                      }}
-                      className="bg-white active:bg-blueGray-50 text-gray-700 px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
-                      type="button"
-                    >
-                      Go to Dashboard
-                    </button>
-                  </div>
-                    ) : ( */}
-                <Link
-                  href="/signin"
-                  rel="nofollow noreferrer"
-                  className="mx-auto"
-                >
-                  <div className="inline-block rounded-full p-px group cursor-pointer">
-                    <button
-                      className="bg-white active:bg-blueGray-50 text-gray-700 px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
-                      type="button"
-                    >
-                      Sign In
-                    </button>
-                  </div>
+                <Link href="/signin" rel="nofollow noreferrer">
+                  <button
+                    className="px-6 py-2.5 rounded-full bg-amber-600 text-white font-medium text-sm hover:bg-amber-700 transition-colors shadow-sm"
+                    type="button"
+                  >
+                    Sign In
+                  </button>
                 </Link>
-                {/* )} */}
               </ul>
             </div>
           </div>

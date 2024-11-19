@@ -3,19 +3,23 @@ import "./globals.css";
 // import "../styles/Home.module.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Inter } from "next/font/google";
+import { Toaster } from "@/components/ui/toaster";
+import Providers from "@/components/Providers";
 import Analytics from "../components/Analytics";
 import CookieConsent from "@/components/CookieConsent";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const inter = Inter({ subsets: ["latin"] });
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = {
   title: "Imaiger: Best Online Platform to Generate AI Images for Website",
@@ -48,13 +52,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // <html lang="en">
+    //   <body
+    //     className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
+    //   >
+    //     {children}
+    //     <CookieConsent open={true} />
+    //     <Analytics />
+    //   </body>
+    // </html>
+
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
-      >
-        {children}
-        <CookieConsent open={true} />
-        <Analytics />
+      <body className={`${inter.className} antialiased`}>
+        <Providers>
+          {children}
+          <Toaster />
+          <Analytics />
+          <CookieConsent open={true} />
+        </Providers>
       </body>
     </html>
   );

@@ -13,6 +13,10 @@ import { MobileNav } from "@/components/mobile-navbar";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
   title: "Account - Imaiger",
   description: "Manage your Imaiger account",
 };

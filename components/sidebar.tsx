@@ -1,5 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { SignOut } from "@/utils/auth-helpers/server";
+import { handleRequest } from "@/utils/auth-helpers/client";
 import { Button } from "@/components/ui/button";
 import {
   HoverCard,
@@ -42,10 +44,6 @@ export function Sidebar({ className }: SidebarProps) {
         break;
       case "Profile":
         router.push("/account");
-        break;
-      case "Logout":
-        await supabase.auth.signOut();
-        router.refresh();
         break;
       case "Support":
         router.push("mailto:support@imaiger.com");
@@ -333,28 +331,33 @@ export function Sidebar({ className }: SidebarProps) {
                   Report Bug
                 </Button>
               </Link>
-              <Button
-                id="Logout"
-                onClick={handleClick}
-                variant="ghost"
-                className="w-full justify-start"
-              >
-                <svg
-                  stroke="currentColor"
-                  fill="none"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mr-2 h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
+              <form onSubmit={(e) => handleRequest(e, SignOut, router)}>
+                <input type="hidden" name="pathName" value={usePathname()} />
+
+                <Button
+                  id="Logout"
+                  type="submit"
+                  // onClick={handleClick}
+                  variant="ghost"
+                  className="w-full justify-start"
                 >
-                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                  <polyline points="16 17 21 12 16 7" />
-                  <line x1="21" y1="12" x2="9" y2="12" />
-                </svg>
-                Log out
-              </Button>
+                  <svg
+                    stroke="currentColor"
+                    fill="none"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-2 h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1="21" y1="12" x2="9" y2="12" />
+                  </svg>
+                  Log out
+                </Button>
+              </form>
             </div>
           </div>
         </div>

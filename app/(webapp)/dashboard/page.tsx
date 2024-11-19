@@ -1,4 +1,7 @@
 import { Metadata } from "next";
+import { createClient } from "@/utils/supabase/server";
+import { getUser, getSubscription } from "@/utils/supabase/queries";
+import { redirect } from "next/navigation";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 
 import { Button } from "@/components/ui/button";
@@ -10,11 +13,27 @@ import MadeForYou from "@/components/MadeForYou";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
   title: "Dashboard - Imaiger",
   description: "Imaiger dashboard to generate AI images and analyze webpage.",
 };
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const supabase = createClient();
+  const [user, subscription] = await Promise.all([
+    getUser(supabase),
+    getSubscription(supabase),
+  ]);
+
+  if (!user) {
+    return redirect("/signin");
+  }
+  if (!subscription) {
+    return redirect("/pricing");
+  }
   return (
     <>
       <MobileNav />

@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
   const code = requestUrl.searchParams.get("code"); // Used for social logins
   const token_hash = requestUrl.searchParams.get("token_hash"); // Used email registeration
   const type = requestUrl.searchParams.get("type") as EmailOtpType | null; // Used email registeration
+  const next = requestUrl.searchParams.get("next") || "/dashboard";
 
   if (token_hash && type) {
     const supabase = createClient();
@@ -51,7 +52,7 @@ export async function GET(request: NextRequest) {
   // URL to redirect to after sign in process completes
   return NextResponse.redirect(
     getStatusRedirect(
-      `${requestUrl.origin}/dashboard`,
+      `${requestUrl.origin}${next}`,
       "Success!",
       "You are now signed in."
     )
