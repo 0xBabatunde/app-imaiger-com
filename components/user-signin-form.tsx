@@ -105,6 +105,7 @@ export function UserSignInForm({
         </div>
       </div>
       <form onSubmit={(e) => handleGoogleSignIn(e)}>
+      <input type="hidden" name="provider" value="google" />
         <Button variant="outline" type="submit" disabled={isSubmitting}>
           {isSubmitting ? (
             <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
