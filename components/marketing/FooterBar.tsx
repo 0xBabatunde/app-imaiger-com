@@ -75,6 +75,15 @@ export default function FooterBar() {
               <li className="text-gray-400 transition hover:text-gray-400/75">
                 <Link href="/">AI Webpage Analyse</Link>
               </li>
+              
+              <li className="text-gray-400 transition hover:text-gray-400/75">
+                <Link href="https://1029th.com">AI Thumbnail Maker</Link>
+              </li>
+
+              <li className="text-gray-400 transition hover:text-gray-400/75">
+                <Link href="https://facelessai.video">Faceless AI Video</Link>
+              </li>
+
             </ul>
           </div>
 
