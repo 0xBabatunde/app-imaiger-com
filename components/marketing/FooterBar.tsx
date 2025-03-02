@@ -84,6 +84,10 @@ export default function FooterBar() {
                 <Link href="https://facelessai.video">Faceless AI Video</Link>
               </li>
 
+              <li className="text-gray-400 transition hover:text-gray-400/75">
+                <Link href="https://aiugc.video">AI UGC Video</Link>
+              </li>
+
             </ul>
           </div>
 
@@ -264,7 +268,7 @@ export default function FooterBar() {
             />
 
             <p className="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-right">
-              Copyright &copy; 2024. All rights reserved. A product of Dranft
+              Copyright &copy; {new Date().getFullYear()} All rights reserved. A product of Dranft
               Labs
             </p>
           </div>
